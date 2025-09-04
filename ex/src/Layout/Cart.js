@@ -6,6 +6,8 @@ const Cartpage = () => {
     const cartitems=useSelector((state)=>state.cart.cartItems);
     console.log(cartitems);
     const dispatch=useDispatch();
+
+    
 return (
     <section>
     <div className="BestSelllings">
