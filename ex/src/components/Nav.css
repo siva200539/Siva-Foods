@@ -1,0 +1,42 @@
+body{
+    background-color: rgb(12, 12, 12);
+}
+h1{
+    background-color:rgb(174, 197, 216);
+}
+.head{
+    color:black;
+    display: flex;
+    margin-left: 45px;
+    font-size: 23px;
+
+}
+header{
+    background-color: rgb(129, 204, 79);
+    color:bisque;
+    padding: 0px;
+
+    text-align: center;
+    height: 130px;
+}
+.cont{
+    margin-top:-40px;
+}
+nav a{
+    color:black;
+    text-decoration: none;
+    margin:0 15px;
+    font-size: 25px;
+}
+nav a:hover{
+  text-decoration: none;
+  background: aqua;
+  border-radius: 30px;
+  padding: 20px;
+}
+.log{
+    height:40px;
+    display: block;
+    margin-left: 0;
+    margin-top:-45px;
+}

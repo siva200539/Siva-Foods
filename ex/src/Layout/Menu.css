@@ -1,0 +1,81 @@
+.image-cont {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    justify-content: center;
+    gap: 50px;
+    max-width: 1000px;
+    margin: 60px 200px;
+}
+
+.image-item {
+    width: 250px;
+    background: white;
+    box-shadow: 0 4px 8px black;
+    overflow: hidden;
+    transition: transform 0.2s;
+    text-align: center;
+}
+
+.image-item img {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    opacity: 0;
+    transform: translateX(100px); /* start off to the right */
+    animation: slideFromRight 1s ease forwards;
+    animation-delay: 0.3s;
+}
+
+/* Hover effect */
+.image-item:hover {
+    transform: translateY(-5px);
+}
+
+.image-item:hover img {
+    transform: scale(1.05);
+}
+
+.image-item .btn {
+    margin-top: 10px;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 10px;
+    background: orangered;
+    color: wheat;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background: darkblue;
+}
+
+.cont {
+    padding: 30px;
+}
+
+.cont p {
+    margin: 10px 0 5px;
+    font-size: 30px;
+    color: #333;
+}
+
+.price {
+    font-size: 20px;
+    font-weight: bold;
+    color: #222;
+    margin-bottom: 10px;
+}
+
+/* 🔹 Animation keyframes */
+@keyframes slideFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}

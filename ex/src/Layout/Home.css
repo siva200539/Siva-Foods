@@ -1,0 +1,48 @@
+.title{
+    color:antiquewhite;
+    margin-top: 20px;
+    font-family: Arials, sans-serif;
+    margin-top:70px;
+    margin-left: 140px;
+}
+.hunger{
+      font-size: 20px;
+      font-style:italic;
+      font-weight: bold;
+}
+.wait{
+    font-size: 50px;
+    font-weight: normal;
+}
+.order-btn{
+    display: inline-block;
+    padding: 15px 30px;
+    background: whitesmoke;
+    font-size: 20px;
+    text-decoration: none;
+    color:rgb(192, 118, 20);
+    border-radius:30px;
+    margin-left: 130px;
+}
+.order-btn:hover{
+    background: burlywood;
+    transform:scale(1.1);
+    box-shadow: 0 4px 15px rgb(196, 182, 156);
+}
+.cook {
+    margin-left:800px ;
+    display: block;
+    height:530px;
+    width:550px;
+    margin-top: -250px;
+}
+.regis{
+    display: inline-block;
+    padding: 15px 30px;
+    background: whitesmoke;
+    font-size: 20px;
+    text-decoration: none;
+    color:rgb(192, 118, 20);
+    border-radius:30px;
+    margin-right: -9000px;
+}
