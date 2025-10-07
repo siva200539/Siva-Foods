@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 //import { decrement, increment } from './counterSlice'
 import { incrementfamous,decrementfamous } from '../redux/CounterSlice'
-export function Famous() {
+function Famous() {
 
   const famouscount = useSelector((state) => state.famous.famousCount)
   const unfamouscount=useSelector((state)=>state.famous.unfamouscount)
@@ -26,10 +26,10 @@ export function Famous() {
           aria-label="Decrement value"
           onClick={() => dispatch(decrementfamous(4))}
         >
-
-          Decrement
+Decrement
         </button>
       </div>
     </div>
   )
 }
+export default Famous;

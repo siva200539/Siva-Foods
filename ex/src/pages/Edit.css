@@ -1,0 +1,47 @@
+.edit-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+  background: url("https://images.unsplash.com/photo-1504674900247-0877df9cc836") no-repeat center center/cover;
+  /* ↑ You can replace the URL with your own cooking image */
+}
+
+/* Card Styling */
+.card {
+  max-width: 500px;
+  width: 100%;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.9); /* slightly transparent to show background */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+}
+
+/* Heading */
+h2 {
+  color: #333;
+  font-weight: bold;
+}
+
+/* Form Controls */
+.form-control {
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  transition: 0.3s;
+}
+
+.form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0px 0px 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Button */
+.btn-primary {
+  border-radius: 8px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}

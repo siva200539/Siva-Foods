@@ -8,15 +8,16 @@ const Nav = () => {
   return (
     <div>
       <header>
-        <p className="head">SIVA foods</p>
+        <p className="name" >Aura Hotel</p>
         <img src={lo} alt="logo" className="log"/>
-        
+      </header>  
         <nav className="cont">
           <Link to="/">Home</Link>
-          <Link to="/table">Table</Link>
-          <Link to="/menu">Menu</Link>          <Link to="/cart">CART</Link>
+          <Link to="/menu">Menu</Link>          
+          <Link to="/cart">Cart</Link>
+          <Link to='/register'><button className="sign">Sign up</button></Link>
         </nav>
-      </header>
+      
 
     
     </div>
@@ -24,3 +25,4 @@ const Nav = () => {
 };
 
 export default Nav;
+          

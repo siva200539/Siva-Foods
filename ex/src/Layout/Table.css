@@ -1,16 +1,7 @@
 .group{
             display:flex;
             margin:10px 50px;
-}
-.group1{
-           display:flex;
-           margin-left: 45px; 
-           margin-top: 50px;
-}
-.group2{
-   display:flex;
-           margin-left: 45px; 
-           margin-top: 50px;
+            gap:20px;
 }
 .circle,.square{
   width:90px; height:90px;
@@ -20,22 +11,41 @@
   background:#f3f3f3;
   border:3px solid #222;
 }
+.squa{
+  height:100px;
+  width:100px;
+  display:flex;
+  background-color: #f3f3f3;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  margin-left:150px;
+}
 .circle{ border-radius:50%; }
 .square{ border-radius:12px; }
 .layou{
   display: flex;
   flex-direction: column;
-  gap:20px;
-  align-items: center;margin-top:-360px;
-    margin-left:-500px;
+  gap:20px;   
+  align-items: center;margin-top:-300px;
+    margin-left:-440px;
 }
 .layout{
   display: flex;
   flex-direction: column;
   gap:20px;
   align-items: center;
-  margin-top:-280px;
-  margin-left:-100px;
+  margin-top:-300px;
+  margin-left:-150px;
+}
+.circles{
+  width:90px;
+  height:90px;
+  background-color: aliceblue;
+  border-radius: 50%;
+  border:3px solid black;
+ margin-left:300px;
+  margin-top:-112px;
 }
 .row{
   display: flex;

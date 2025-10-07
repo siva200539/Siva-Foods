@@ -32,9 +32,9 @@
 .cook {
     margin-left:800px ;
     display: block;
-    height:530px;
+    margin-top:-220px;
+    height:500px;
     width:550px;
-    margin-top: -250px;
 }
 .regis{
     display: inline-block;

@@ -12,8 +12,10 @@
     background: white;
     box-shadow: 0 4px 8px black;
     overflow: hidden;
+    border-radius: 30px;
     transition: transform 0.2s;
     text-align: center;
+    
 }
 
 .image-item img {
@@ -33,6 +35,10 @@
 
 .image-item:hover img {
     transform: scale(1.05);
+}
+.cont{
+    font-size: 30px;
+    color: aqua;
 }
 
 .image-item .btn {

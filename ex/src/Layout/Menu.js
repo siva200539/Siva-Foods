@@ -8,18 +8,18 @@ const FoodGallery = () => {
 
   return (
     <div className="image-cont">
-
-        {
+{
             foodata.map((a)=>{
             return(
     <div className="image-item" key={a.id}>
         <img src={a.img} alt="Noodles" />
-        <div className="cont">
+        <div >
           <p>{a.title}</p>
           <h2 className="price">{a.price}</h2>
           <button className="btn" onClick={()=>dispatch(addToCart(a))}>ADD +</button>
           
         </div>
+       
       </div>
  
             )

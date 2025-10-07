@@ -1,0 +1,23 @@
+.row{
+     width:auto;
+    height:500px;
+    margin-left: 60px;
+    border-radius: 30px;
+    transition: transform 0.2s;
+    margin-top: 40px;
+    gap:40px;
+}   
+.btm{
+    position: fixed;
+      bottom: 20px;     /* distance from bottom */
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #007BFF;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      z-index: 1000;    /* so it stays above content */
+    
+}

@@ -1,0 +1,143 @@
+/* 🍳 Background with soft cooking aesthetic */
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1740&q=80")
+    no-repeat center center/cover;
+  font-family: "Poppins", sans-serif;
+  position: relative;
+  padding: 20px;
+}
+
+/* 🌫️ Overlay for contrast */
+.login-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(3px);
+  z-index: 0;
+}
+
+/* 🧊 Glassmorphic Login Card */
+.login-card {
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(15px);
+  border-radius: 22px;
+  padding: 45px 40px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  animation: fadeIn 0.8s ease;
+  transition: all 0.4s ease;
+}
+
+.login-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 45px rgba(0, 0, 0, 0.35);
+}
+
+/* ✨ Heading */
+.login-card h2 {
+  font-size: 1.9rem;
+  color: #2e2e2e;
+  margin-bottom: 25px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* 🧾 Input Fields */
+.form-group {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+  border-color: #ff8c00;
+  box-shadow: 0 0 8px rgba(255, 140, 0, 0.4);
+}
+
+/* 🍊 Login Button */
+.btn-login {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #ff8c00, #ffa94d);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.btn-login:hover {
+  background: linear-gradient(135deg, #ff7a00, #ff9a00);
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(255, 165, 0, 0.6);
+}
+
+/* ✅ Success / ❌ Error messages */
+.msg {
+  margin-top: 15px;
+  font-weight: 600;
+}
+
+.msg.success {
+  color: #2e7d32;
+}
+
+.msg.error {
+  color: #c62828;
+}
+
+/* 📱 Responsive Design */
+@media (max-width: 480px) {
+  .login-card {
+    padding: 30px 20px;
+    border-radius: 15px;
+  }
+
+  .login-card h2 {
+    font-size: 1.5rem;
+  }
+
+  .btn-login {
+    font-size: 0.95rem;
+  }
+}
+
+/* 💫 Smooth Fade-In Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
