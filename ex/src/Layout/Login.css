@@ -1,0 +1,85 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(120deg,#ffe5d9,#fff0f5);
+  animation: fadeInBg 1s ease forwards;
+}
+
+@keyframes fadeInBg {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.login-card {
+  background: white;
+  padding: 50px 40px;
+  border-radius: 25px;
+  box-shadow: 0 6px 25px rgba(0,0,0,0.25);
+  width: 350px;
+  text-align: center;
+  transform: translateY(-60px);
+  opacity: 0;
+  animation: slideIn 0.8s forwards;
+}
+
+@keyframes slideIn {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.login-card h2 {
+  font-size: 2rem;
+  margin-bottom: 25px;
+  color: #ff7675;
+}
+
+.login-card input {
+  width: 100%;
+  padding: 12px 15px;
+  margin: 12px 0;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.login-card input:focus {
+  border-color: #ff7675;
+  transform: scale(1.05);
+}
+
+.login-card button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 12px;
+  border: none;
+  background: #ff7675;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.login-card button:hover {
+  background: #e74c3c;
+  transform: scale(1.05);
+}
+
+.msg.error {
+  color: #e74c3c;
+  margin-top: 10px;
+  font-weight: bold;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}

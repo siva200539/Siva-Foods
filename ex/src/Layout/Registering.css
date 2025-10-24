@@ -1,0 +1,188 @@
+/* Background setup */
+.register-bg {
+  background: url("https://images.unsplash.com/photo-1557682224-5b8590cd9ec5?auto=format&fit=crop&w=2000&q=80")
+    no-repeat center center/cover;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(10px);
+}
+
+/* Glassmorphic container */
+.register-box {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 30px 40px;
+  width: 90%;
+  max-width: 700px;
+  color: #e0f7fa;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+  animation: fadeUp 1s ease;
+}
+
+/* Title */
+.register-title {
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #a7ffeb;
+  text-shadow: 0 0 5px #00e676;
+  margin-bottom: 25px;
+}
+
+/* Progress bar */
+.progress-container {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin: 25px 0 35px;
+}
+
+.progress-line {
+  position: absolute;
+  top: 15px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 2px;
+}
+
+.progress-fill {
+  position: absolute;
+  top: 15px;
+  left: 0;
+  height: 4px;
+  background: #00e676;
+  border-radius: 2px;
+  transition: width 1.2s ease;
+}
+
+.progress-step {
+  text-align: center;
+  width: 33%;
+  font-weight: 600;
+  color: rgba(224, 247, 250, 0.7);
+  text-shadow: 0 0 3px #000;
+}
+
+.progress-step.active {
+  color: #00ffc2;
+}
+
+.progress-step .circle {
+  display: block;
+  width: 26px;
+  height: 26px;
+  margin: 0 auto 8px;
+  border-radius: 50%;
+  background: #ccc;
+  transition: 0.3s;
+}
+
+.progress-step.active .circle {
+  background: #00e676;
+  box-shadow: 0 0 18px #00e676, 0 0 8px #00ffc2;
+}
+
+/* Table */
+.order-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 15px;
+  color: #d0f4f7;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
+}
+
+.order-table th {
+  background: rgba(0, 0, 0, 0.25);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.order-table td {
+  text-align: center;
+  padding: 10px;
+}
+
+/* Grand total */
+.grand-total {
+  text-align: right;
+  font-size: 1.4rem;
+  color: #a7ffeb;
+  font-weight: 700;
+  text-shadow: 0 0 5px #00e676;
+}
+
+/* Form */
+.order-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.order-form input,
+.order-form select,
+.order-form textarea {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 12px;
+  padding: 12px;
+  color: #d4f8e8;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.order-form input::placeholder,
+.order-form textarea::placeholder {
+  color: #b2fff9;
+  opacity: 0.8;
+}
+
+.order-form input:focus,
+.order-form select:focus,
+.order-form textarea:focus {
+  border-color: #00ffc2;
+  box-shadow: 0 0 15px rgba(0, 255, 194, 0.5);
+}
+
+/* Submit button */
+.submit-btn {
+  background: linear-gradient(135deg, #00e676, #00ffc2);
+  border: none;
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: 700;
+  border-radius: 14px;
+  padding: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(0, 230, 118, 0.7), 0 0 10px rgba(0, 255, 194, 0.5);
+}
+
+/* Empty message */
+.empty-msg {
+  text-align: center;
+  color: #c8fff4;
+  font-weight: 500;
+}
+
+/* Animation */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

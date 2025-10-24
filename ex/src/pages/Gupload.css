@@ -1,152 +1,192 @@
-/* 🌈 Elegant gradient background with overlay */
 .upload-container {
-  min-height: 100vh;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 60px 20px;
-  background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-  background-attachment: fixed;
-  font-family: "Poppins", sans-serif;
-  position: relative;
-}
-
-/* Optional subtle texture overlay */
-.upload-container::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
-}
-
-/* 🧩 Responsive grid layout */
-.cart-items {
-  position: relative;
-  z-index: 2;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 25px;
-  width: 100%;
   max-width: 1200px;
+  margin: 60px auto;
+  padding: 20px;
+  background: linear-gradient(135deg, #f8fafc, #e0e7ff);
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 1s ease;
+}
+
+.upload-title {
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #2f2f2f;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+  animation: popIn 0.8s ease;
+}
+
+.upload-header {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.refresh-btn {
+  background: linear-gradient(90deg, #4f46e5, #3b82f6);
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  font-weight: 600;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.refresh-btn:hover {
+  transform: scale(1.08);
+  background: linear-gradient(90deg, #4338ca, #2563eb);
+}
+
+.cart-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
   padding: 10px;
 }
 
-/* 🍸 Card with glass effect */
 .cart-card {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  border-radius: 20px;
-  padding: 25px;
-  text-align: center;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-  transition: all 0.4s ease;
-  transform: translateY(0);
+  background: white;
+  padding: 18px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+  transform-origin: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cart-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, rgba(79, 70, 229, 0.1), rgba(59, 130, 246, 0.1));
+  transition: all 0.5s;
+}
+
+.cart-card:hover::before {
+  left: 0;
 }
 
 .cart-card:hover {
-  transform: translateY(-8px) scale(1.03);
-  background: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  transform: translateY(-6px) scale(1.02);
 }
 
-/* 🍽️ Dish name */
-h3 {
-  color: #2c1810;
-  margin-bottom: 12px;
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.dish-name {
+  font-size: 1.3rem;
   font-weight: 700;
-  font-size: 1.4rem;
-  text-transform: capitalize;
+  color: #1e293b;
 }
 
-/* 🧾 Item details */
-p {
-  color: #4b3832;
-  font-size: 1rem;
-  margin: 6px 0;
+.status-badge {
+  background: #22c55e;
+  color: white;
+  font-size: 0.8rem;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-weight: 500;
 }
 
-p strong {
-  color: #000;
+.card-body p {
+  margin: 5px 0;
+  font-size: 0.95rem;
+  color: #374151;
 }
 
-/* ⚙️ Button container */
 .card-actions {
   display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin-top: 18px;
+  justify-content: space-between;
+  margin-top: 15px;
 }
 
-/* ❌ Delete button (Red gradient) */
-.btn-delete {
-  background: linear-gradient(135deg, #ff5858, #d00000);
-  color: #fff;
+.btn-delete,
+.btn-edit {
+  flex: 1;
+  margin: 4px;
+  padding: 10px 12px;
   border: none;
-  padding: 8px 16px;
   border-radius: 10px;
-  cursor: pointer;
-  transition: all 0.3s ease;
   font-weight: 600;
-  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-delete {
+  background-color: #ef4444;
+  color: white;
+}
+
+.btn-edit {
+  background-color: #3b82f6;
+  color: white;
 }
 
 .btn-delete:hover {
-  transform: scale(1.08);
-  box-shadow: 0 0 10px rgba(255, 88, 88, 0.6);
-}
-
-/* ✏️ Edit button (Blue gradient) */
-.btn-edit {
-  background: linear-gradient(135deg, #56ccf2, #2f80ed);
-  color: #fff;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-weight: 600;
-  letter-spacing: 0.5px;
+  background-color: #dc2626;
+  transform: scale(1.05);
 }
 
 .btn-edit:hover {
-  transform: scale(1.08);
-  box-shadow: 0 0 10px rgba(86, 204, 242, 0.6);
+  background-color: #2563eb;
+  transform: scale(1.05);
 }
 
-/* 📱 Responsive tweaks */
-@media (max-width: 1024px) {
-  .cart-items {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+.loading-text,
+.no-data {
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #6b7280;
+  margin-top: 40px;
+}
+
+/* ✨ Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@media (max-width: 768px) {
-  .upload-container {
-    padding: 40px 15px;
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
   }
-
-  h3 {
-    font-size: 1.2rem;
-  }
-
-  .btn-edit,
-  .btn-delete {
-    padding: 6px 12px;
-    font-size: 0.9rem;
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
-@media (max-width: 480px) {
-  .cart-card {
-    padding: 18px;
-    border-radius: 15px;
-  }
+.slide-up {
+  animation: slideUp 0.7s ease forwards;
+}
 
-  .card-actions {
-    flex-direction: column;
-    gap: 10px;
+@keyframes slideUp {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
 }

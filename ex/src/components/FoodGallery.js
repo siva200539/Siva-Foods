@@ -18,7 +18,7 @@ const FoodGallery = () => {
           <img src={a.img} alt={a.title} />
           <div className="cont">
             <p>{a.title}</p>
-            <h2 className="price">${a.price}</h2>
+            <h2 className="price">₹{a.price}</h2>
             <button className="btn" onClick={() => handleAdd(a)}>
               ADD +
             </button>

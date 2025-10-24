@@ -17,44 +17,49 @@ const foodata=[
         id:1,
         img:noodle,
         title:"Noodles",
-        price:"$100"
+        price:"100",
+        quantity:1
     },
      {
         id:2,
         img:pasta,
         title:"Pesto Pasta",
-        price:"$90"
+        price:"90",
+        quantity:1
     },
      {
         id:3,
         img:pastaa,
         title:"Lasanga",
-        price:"$120"
+        price:"120",
+        quantity:1
     },
      {
         id:4,
         img:pualo,
         title:"Pulaov",
-        price:"$80"
+        price:"80",
+        quantity:1
     },
      {
         id:5,
         img:asalad,
         title:"Avacado salad",
-        price:"$230"
+        price:"230",
+        quantity:1
     },
       {
         id:6,
         img:ck,
         title:"Rice",
-        price:"$200",
+        price:"200",
         quantity:1
     },
      {
         id:7,
         img:nbutter,
         title:"Naan with butter",
-        price:"$190",
+        price:"190",
          quantity:1
 
     },
@@ -62,7 +67,7 @@ const foodata=[
         id:8,
         img:bri,
         title:"Briyani",
-        price:"$120",
+        price:"120",
         quantity:1
 
     },
@@ -70,7 +75,7 @@ const foodata=[
         id:9,
         img:ladd,
         title:"Laddo",
-        price:"$30",
+        price:"30",
                 quantity:1
 
     },
@@ -78,7 +83,7 @@ const foodata=[
         id:1,
         img:piz,
         title:"Pizza",
-        price:"$130",
+        price:"130",
                 quantity:1
 
     },
@@ -86,7 +91,7 @@ const foodata=[
         id:12,
         img:bur,
         title:"Burger",
-        price:"$136", 
+        price:"136", 
                quantity:1
 
     },
@@ -94,7 +99,7 @@ const foodata=[
         id:13,
         img:ds,
         title:"Dosa",
-        price:"$90",
+        price:"90",
                 quantity:1
 
     },
@@ -102,7 +107,7 @@ const foodata=[
         id:13,
         img:ca,
         title:"Cake",
-        price:"$90",
+        price:"90",
                 quantity:1
 
     },
@@ -110,10 +115,9 @@ const foodata=[
         id:13,
         img:jui,
         title:"Juice",  
-        price:"$90",
+        price:"90",
          quantity:1
-
-    }
+        }
 
 ]
 

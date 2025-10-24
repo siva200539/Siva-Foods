@@ -1,25 +1,43 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { useSelector, useDispatch } from "react-redux";
 import { clearOrders } from "../redux/OrderSlice";
+import "react-toastify/dist/ReactToastify.css";
+import "./Registering.css";
 
 const Registering = () => {
   const dispatch = useDispatch();
   const orderedItems = useSelector((state) => state.orders.orderedItems);
 
-  // ✅ Fix: Calculate grand total correctly by stripping ₹ and converting to numbers
   const totalAmount = orderedItems.reduce((sum, item) => {
-    const cleanPrice = Number(item.price.replace(/[^\d.-]/g, ""));
-    const quantity = Number(item.quantity);
-    const itemTotal = cleanPrice * quantity;
-    return sum + itemTotal;
+    const price =
+      typeof item.price === "string"
+        ? Number(item.price.replace(/[^\d.-]/g, ""))
+        : item.price;
+    return sum + price * item.quantity;
   }, 0);
 
   const [formData, setFormData] = useState({
     name: "",
-    tableNo: "",
-    transaction: "",
+    phone: "",
+    address: "",
+    orderType: "",
+    specialNote: "",
   });
+
+  const [orderStage, setOrderStage] = useState("order");
+
+  // Animate order progress
+  useEffect(() => {
+    if (orderStage === "order") {
+      const timer1 = setTimeout(() => setOrderStage("processing"), 2500);
+      const timer2 = setTimeout(() => setOrderStage("delivered"), 5000);
+      return () => {
+        clearTimeout(timer1);
+        clearTimeout(timer2);
+      };
+    }
+  }, [orderStage]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -27,119 +45,152 @@ const Registering = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    if (!formData.name || !formData.tableNo || !formData.transaction) {
-      toast.warn("⚠️ Please fill all fields");
+    if (!formData.name || !formData.phone) {
+      toast.warn("⚠️ Please fill all required fields");
       return;
     }
 
     const orderData = {
-      name: formData.name,
-      tableNo: formData.tableNo,
-      dishes: orderedItems,
-      transaction: formData.transaction,
+      ...formData,
+      dish: orderedItems.map((item) => item.title || item.dish),
       amount: totalAmount,
-      status: "Payment Successful ✅",
+      status: "Order Placed",
+      createdAt: new Date(),
     };
 
-    fetch("http://localhost:7001/upload", {
+    fetch("http://localhost:7001/placeorder", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(orderData),
     })
       .then((res) => res.json())
       .then(() => {
-        toast.success("✅ Order Registered Successfully!");
-        dispatch(clearOrders()); // Clear the cart after saving
-        setFormData({ name: "", tableNo: "", transaction: "" });
+        toast.success("✅ Order Placed Successfully!");
+        dispatch(clearOrders());
+        setFormData({
+          name: "",
+          phone: "",
+          address: "",
+          orderType: "",
+          specialNote: "",
+        });
+        setOrderStage("order");
       })
-      .catch(() => toast.error("❌ Error while saving order"));
+      .catch(() => toast.error("❌ Failed to place order"));
+  };
+
+  const ProgressAnimation = () => {
+    const steps = ["Order", "Processing", "Delivered"];
+    const activeIndex =
+      orderStage === "order" ? 0 : orderStage === "processing" ? 1 : 2;
+
+    return (
+      <div className="progress-container">
+        <div className="progress-line"></div>
+        <div
+          className="progress-fill"
+          style={{ width: `${(activeIndex / 2) * 100}%` }}
+        ></div>
+        {steps.map((step, i) => (
+          <div
+            key={i}
+            className={`progress-step ${i <= activeIndex ? "active" : ""}`}
+          >
+            <span className="circle"></span>
+            {step}
+          </div>
+        ))}
+      </div>
+    );
   };
 
   return (
-    <div
-      style={{
-        maxWidth: "600px",
-        backgroundColor: "white",
-        margin: "50px auto",
-        padding: "20px",
-        border: "1px solid #ddd",
-        borderRadius: "10px",
-      }}
-    >
-      <ToastContainer />
-      <h2 style={{ textAlign: "center" }}>Finalize Your Order</h2>
+    <div className="register-bg">
+      <div className="register-box">
+        <ToastContainer />
+        <h2 className="register-title">🍴 Finalize Your Order</h2>
 
-      {orderedItems.length === 0 ? (
-        <p>No items ordered yet.</p>
-      ) : (
-        <>
-          <table width="100%" border="1" cellPadding="8">
-            <thead>
-              <tr>
-                <th>Dish</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Total</th>
-              </tr>
-            </thead>
-            <tbody>
-              {orderedItems.map((item, i) => {
-                const cleanPrice = Number(item.price.replace(/[^\d.-]/g, ""));
-                const quantity = Number(item.quantity);
-                const itemTotal = cleanPrice * quantity;
+        <ProgressAnimation />
 
-                return (
-                  <tr key={i}>
-                    <td>{item.dish}</td>
-                    <td>₹{cleanPrice}</td>
-                    <td>{quantity}</td>
-                    <td>₹{itemTotal}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-          <h3 style={{ marginTop: "15px" }}>Grand Total: ₹{totalAmount}</h3>
-        </>
-      )}
+        {orderedItems.length === 0 ? (
+          <p className="empty-msg">No items ordered yet.</p>
+        ) : (
+          <>
+            <table className="order-table">
+              <thead>
+                <tr>
+                  <th>Dish</th>
+                  <th>Price</th>
+                  <th>Qty</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                {orderedItems.map((item, i) => {
+                  const price =
+                    typeof item.price === "string"
+                      ? Number(item.price.replace(/[^\d.-]/g, ""))
+                      : item.price;
+                  return (
+                    <tr key={i}>
+                      <td>{item.title || item.dish}</td>
+                      <td>₹{price}</td>
+                      <td>{item.quantity}</td>
+                      <td>₹{price * item.quantity}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+            <h3 className="grand-total">Grand Total: ₹{totalAmount}</h3>
+          </>
+        )}
 
-      <form onSubmit={handleSubmit} style={{ marginTop: "20px" }}>
-        <input
-          type="text"
-          name="name"
-          placeholder="Customer Name"
-          value={formData.name}
-          onChange={handleChange}
-          required
-        />
-       
-        <select
-          name="transaction"
-          value={formData.transaction}
-          onChange={handleChange}
-          required
-          style={{ marginLeft: "10px" }}
-        >
-          <option value="">-- Select Transaction --</option>
-          <option value="Cash">Cash</option>
-          <option value="UPI">UPI</option>
-          <option value="Card">Card</option>
-        </select>
+        <form className="order-form" onSubmit={handleSubmit}>
+          <input
+            type="text"
+            name="name"
+            placeholder="Your Name"
+            value={formData.name}
+            onChange={handleChange}
+          />
+          <input
+            type="tel"
+            name="phone"
+            placeholder="Phone Number"
+            value={formData.phone}
+            onChange={handleChange}
+          />
+          <textarea
+            name="address"
+            placeholder="Full Address"
+            value={formData.address}
+            onChange={handleChange}
+          ></textarea>
 
-        <button
-          type="submit"
-          style={{
-            width: "100%",
-            background: "green",
-            color: "white",
-            padding: "10px",
-            marginTop: "15px",
-          }}
-        >
-          Confirm & Submit
-        </button>
-      </form>
+          <select
+            name="orderType"
+            value={formData.orderType}
+            onChange={handleChange}
+          >
+            <option value="">-- Select Order Type --</option>
+            <option value="Dine-In">Dine-In</option>
+            <option value="Takeaway">Takeaway</option>
+            <option value="Delivery">Delivery</option>
+          </select>
+
+          <textarea
+            name="specialNote"
+            placeholder="Special Note (optional)"
+            value={formData.specialNote}
+            onChange={handleChange}
+          ></textarea>
+
+          <button className="submit-btn" type="submit">
+            ✅ Confirm & Submit
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

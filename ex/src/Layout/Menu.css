@@ -1,87 +1,172 @@
+/* 🌆 Full Page Background */
+.menu-section {
+  padding: 60px 20px;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fff5e4, #ffe7f7);
+  font-family: "Poppins", sans-serif;
+}
+
+/* 🏷️ Section Heading */
+.menu-heading {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+
+.menu-sub {
+  text-align: center;
+  color: #777;
+  margin-bottom: 40px;
+  font-size: 1.1rem;
+}
+
+/* 🧾 Food Card Grid */
 .image-cont {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    justify-content: center;
-    gap: 50px;
-    max-width: 1000px;
-    margin: 60px 200px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 35px;
+  justify-content: center;
+  align-items: stretch;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.image-item {
-    width: 250px;
-    background: white;
-    box-shadow: 0 4px 8px black;
-    overflow: hidden;
-    border-radius: 30px;
-    transition: transform 0.2s;
-    text-align: center;
-    
+/* 🍴 Food Card */
+.card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  animation: fadeUp 0.8s ease forwards;
+  opacity: 0;
 }
 
-.image-item img {
-    width: 100%;
-    height: 190px;
-    object-fit: cover;
-    opacity: 0;
-    transform: translateX(100px); /* start off to the right */
-    animation: slideFromRight 1s ease forwards;
-    animation-delay: 0.3s;
+.card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 15px 35px rgba(255, 94, 0, 0.3);
 }
 
-/* Hover effect */
-.image-item:hover {
-    transform: translateY(-5px);
+/* 🍕 Image Section */
+.img-box {
+  overflow: hidden;
+  height: 200px;
+  border-bottom: 2px solid #ffb300;
 }
 
-.image-item:hover img {
-    transform: scale(1.05);
-}
-.cont{
-    font-size: 30px;
-    color: aqua;
-}
-
-.image-item .btn {
-    margin-top: 10px;
-    padding: 10px 18px;
-    border: none;
-    border-radius: 10px;
-    background: orangered;
-    color: wheat;
-    font-size: 15px;
-    cursor: pointer;
-    transition: background 0.3s;
+.img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
 }
 
-.btn:hover {
-    background: darkblue;
+.card:hover img {
+  transform: scale(1.1);
 }
 
-.cont {
-    padding: 30px;
+/* 🧁 Details Section */
+.details {
+  padding: 18px;
+  text-align: center;
+  background: linear-gradient(180deg, #fff, #fff7ef);
 }
 
-.cont p {
-    margin: 10px 0 5px;
-    font-size: 30px;
-    color: #333;
+.food-title {
+  font-size: 1.3rem;
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 6px;
 }
 
 .price {
-    font-size: 20px;
-    font-weight: bold;
-    color: #222;
-    margin-bottom: 10px;
+  color: #e65100;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 12px;
 }
 
-/* 🔹 Animation keyframes */
-@keyframes slideFromRight {
-    from {
-        opacity: 0;
-        transform: translateX(100px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
+/* 🧡 Add Button */
+.add-btn {
+  padding: 10px 20px;
+  background: linear-gradient(90deg, #ff7a00, #ff3d00);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(255, 87, 34, 0.4);
+}
+
+.add-btn:hover {
+  background: linear-gradient(90deg, #ff3d00, #ff7a00);
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(255, 87, 34, 0.6);
+}
+
+/* 🌈 Glow on hover border */
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 5px;
+  width: 0%;
+  background: linear-gradient(90deg, #ff3d00, #ffb300, #ff9800);
+  transition: width 0.5s ease;
+}
+
+.card:hover::before {
+  width: 100%;
+}
+
+/* 📱 Responsive tweaks */
+@media (max-width: 768px) {
+  .menu-heading {
+    font-size: 2rem;
+  }
+
+  .menu-sub {
+    font-size: 1rem;
+    margin-bottom: 25px;
+  }
+
+  .image-cont {
+    gap: 25px;
+  }
+
+  .card {
+    border-radius: 18px;
+  }
+
+  .img-box {
+    height: 180px;
+  }
+
+  .food-title {
+    font-size: 1.2rem;
+  }
+
+  .add-btn {
+    padding: 9px 18px;
+    font-size: 0.9rem;
+  }
+}
+
+/* 🌟 Fade Up Animation */
+@keyframes fadeUp {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }

@@ -1,56 +1,100 @@
-body{
-    background-color: rgb(22, 24, 23);
-    text-decoration: none;
+.nav-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background: linear-gradient(90deg,#ff7675,#ffb199);
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  transition: background 0.3s ease;
 }
-.cont{
-    position: relative;
-    z-index: 1;
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
 }
-h1{
-    background-color:rgb(174, 197, 216);
+
+.logo {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
 }
-.name{
-    color:black;
-    font-size: 40px;
-    margin-left: 80px;
-    margin-bottom: 0;
+
+.logo:hover {
+  transform: rotate(15deg) scale(1.1);
 }
-.sign{
-    background-color: black;
-    color:aliceblue;
-    border-radius: 40px;
+
+.name {
+  font-size: 1.7rem;
+  font-weight: 700;
 }
-header{
-    margin-top:20px;
-    background-color:rgb(175, 233, 39);
-    padding: 0px;
-    height: 130px;
-    display:flex;
-    align-items:center;
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
-.cont{
-    margin-top: -110px;
-    margin-left:800px;
-}
-.order-button{
-    background-color: black;
-    color:rgb(248, 245, 245);
-    border-radius: 30px;
-}
-nav a{
-    color:black;
-    text-decoration: none;
-    margin:0 15px;
-    font-size: 25px;
-}
-nav a:hover{
+
+.nav-links a {
+  color: white;
   text-decoration: none;
-  color:beige;
-  padding: 20px;
+  font-weight: 600;
+  position: relative;
+  transition: 0.3s ease;
 }
-.log{
-    height:40px;
-    display: block;
-    margin-left: 0px;
-    margin-top:10px;
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background: white;
+  left: 0;
+  bottom: -5px;
+  transition: 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.profile-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: white;
+  padding: 5px 12px;
+  border-radius: 20px;
+  color: #222;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.profile-section:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.logout-btn {
+  background: #ff7675;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 12px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+  background: #e74c3c;
+  transform: scale(1.1);
 }

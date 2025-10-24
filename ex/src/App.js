@@ -1,40 +1,59 @@
-import Nav from './components/Nav.js';
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from './Layout/Home.js';
-import Menu from './Layout/Menu.js';
-import Bottom from './components/Bottom.js';
-import  Cart from './Layout/Cart.js';
-import  Famous  from './components/Famous.js';
-import Registering from './Layout/Registering.js';
-import Snacksup from './pages/Snacksup.js';
-import Gupload from './pages/Gupload.js';
-import Edit from './pages/Edit.js';
-import Register from './pages/Register.js';
-import Login from './pages/Login.js';
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Nav from "./components/Nav";
+import Bottom from "./components/Bottom";
+
+// ✅ Pages
+import Home from "./Layout/Home";
+import Menu from "./Layout/Menu";
+import Cartpage from "./Layout/Cart"; // renamed for clarity
+import Famous from "./components/Famous";
+import Registering from "./Layout/Registering"; // Order Register Page
+import Snacksup from "./pages/Snacksup";
+import Gupload from "./pages/Gupload";
+import Edit from "./pages/Edit";
+import Login from "./Layout/Login";
+import Contact from "./Layout/Contact";
+import OrderSummary from "./pages/Register";
+
+// ✅ Context
+import { UserProvider } from "./constant/UserContext";
+
+// ✅ Redux
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
+
 function App() {
   return (
-    <BrowserRouter>
-    <Nav/>
-    {/* <Home/> 
-    <Menu/> */}
-    <Routes>
-    
-      <Route path='/' element={<Home/>} />  
-      <Route path='/menu' element={<Menu />} />
-      <Route path='/cart' element={<Cart />} />
-      <Route path='/fam' element={<Famous/>}/>
-      <Route path='/reg' element={<Registering />} />
-      <Route path='/snack' element={<Snacksup />} />
-      <Route path='/order' element={<Gupload />}/>
-      <Route path='/edit/:id' element={<Edit/>}/>
-      <Route path='/register' element={<Register/>}/>
-      <Route path='/login' element={<Login/>}/>
-    </Routes>
-    
-        <Bottom/>
+    <Provider store={store}>
+      <UserProvider>
+        <BrowserRouter>
+          {/* ✅ Navbar */}
+          <Nav />
 
+          {/* ✅ All Routes */}
+          <Routes>
+            {/* Login is the first (landing) page */}
+            <Route path="/login" element={<Login />} />
 
-    </BrowserRouter>
+            {/* Main pages */}
+            <Route path="/home" element={<Home />} />
+            <Route path="/menu" element={<Menu />} />
+            <Route path="/cart" element={<Cartpage />} />
+            <Route path="/fam" element={<Famous />} />
+            <Route path="/reg" element={<Registering />} /> {/* Register Order Page */}
+            <Route path="/snack" element={<Snacksup />} />
+            <Route path="/order" element={<Gupload />} />
+            <Route path="/edit/:id" element={<Edit />} />
+            <Route path="/regis" element={<OrderSummary />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+
+          {/* ✅ Footer */}
+          <Bottom />
+        </BrowserRouter>
+      </UserProvider>
+    </Provider>
   );
 }
 

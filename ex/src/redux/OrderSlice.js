@@ -1,4 +1,4 @@
-// src/redux/OrderSlice.js
+// redux/OrderSlice.js
 import { createSlice } from "@reduxjs/toolkit";
 
 const orderSlice = createSlice({
@@ -8,7 +8,11 @@ const orderSlice = createSlice({
   },
   reducers: {
     addOrder: (state, action) => {
-      state.orderedItems.push(action.payload);
+      if (Array.isArray(action.payload)) {
+        state.orderedItems = [...state.orderedItems, ...action.payload];
+      } else {
+        state.orderedItems.push(action.payload);
+      }
     },
     clearOrders: (state) => {
       state.orderedItems = [];
